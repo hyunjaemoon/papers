@@ -15,7 +15,7 @@
 \maketitle
 
 \begin{abstract}
-This paper explores the design of free-form stories in video games using Large Language Models (LLMs), emphasizing the critical role of Reactive Human-in-the-Loop (RHIT) and agentic workflows.  We argue that while LLMs offer unprecedented potential for generating dynamic and branching narratives, their effective integration into game development necessitates a RHIT approach to ensure coherence, player agency, and artistic direction.  We propose an agentic workflow framework that leverages RHIT for free-form story design, discuss relevant benchmarks for evaluating LLM-generated story quality, and explore the implications for future game narrative design. Our implementation provides concrete guidelines for model selection, fine-tuning approaches, and integration patterns that achieve high performance across narrative benchmarks.
+This paper explores the design of free-form stories in video games using Large Language Models (LLMs), emphasizing the critical role of Reactive Human-in-the-Loop (RHIT) and agentic workflows.  We argue that while LLMs offer unprecedented potential for generating dynamic and branching narratives, their effective integration into game development necessitates a RHIT approach to ensure coherence, player agency, and artistic direction.  We propose an agentic workflow framework that leverages RHIT for free-form story design, discuss relevant benchmarks for evaluating LLM-generated story quality, and explore the implications for future game narrative design.
 \end{abstract}
 
 \section{Introduction}
@@ -26,116 +26,49 @@ Video game narratives are evolving beyond linear scripts towards dynamic and bra
 
 The application of LLMs in game development is a burgeoning field, with research exploring their use in dialogue generation, quest design, and world-building.  Interactive narrative, a long-standing area of game research, seeks to create player-driven stories with meaningful choices and consequences.  Existing approaches to interactive narrative often rely on pre-authored branching trees or procedural generation techniques with limited narrative depth. LLMs offer the potential to move beyond these constraints, generating novel narrative content dynamically.  However, the challenge lies in directing LLMs to produce stories that are not only reactive but also engaging, coherent, and thematically resonant.  Agentic AI, where multiple AI agents collaborate to achieve complex tasks, provides a framework for managing the complexity of LLM-driven narrative generation.  Furthermore, Human-in-the-Loop (HITL) systems are recognized as crucial for guiding and refining AI outputs, particularly in creative domains.  This paper focuses on a specific HITL paradigm, Reactive Human-in-the-Loop, where human intervention is triggered by system-defined events or performance metrics, offering a balance between automation and human oversight.
 
-\section{Framework and Model Selection for Narrative Generation}
-
-Selecting appropriate frameworks and models is crucial for implementing effective LLM-based narrative systems in games. Based on empirical evaluation across multiple narrative benchmarks, we provide specific recommendations for model selection and implementation approaches.
-
-\subsection{LLM Model Selection and Evaluation}
-
-Our comparative analysis across multiple narrative benchmarks indicates that different models excel in specific aspects of game narrative generation:
-
-\begin{itemize}
-    \item \textbf{Base Model Selection:} Recent decoder-only transformer architectures with 13B-70B parameters demonstrate the optimal balance between quality and computational efficiency for real-time game applications. Specifically, models like Claude-3 Opus, GPT-4o, Llama-3 70B, and Mistral Large have achieved superior performance in narrative coherence benchmarks while remaining deployable in game environments. Our benchmarks show that Claude-3 Opus exhibits particularly strong performance in maintaining character consistency (93.7\% consistency score), while GPT-4o excels at dynamic world adaptation (91.2\% adaptation score).
-    
-    \item \textbf{Domain-Specific Models:} For specialized narrative contexts (e.g., fantasy, sci-fi, historical), fine-tuned 7B-13B models can outperform larger general models. Our testing demonstrates that domain-specific fine-tuning on carefully curated corpora of 10,000-50,000 examples can improve genre-appropriate narrative generation by 22-37\% while reducing model size requirements.
-    
-    \item \textbf{Deployment Configurations:} For real-time game applications, we recommend quantized models (4-bit or 8-bit precision) with optimized inference pipelines. Our benchmarks show that 8-bit quantized models retain 97.3\% of narrative quality while reducing inference time by 61\%, critical for maintaining gameplay flow.
-\end{itemize}
-
-\subsection{Framework Implementation}
-
-Based on our experimental results, we recommend the following framework implementations for agentic narrative workflows:
-
-\begin{itemize}
-    \item \textbf{Agent Orchestration:} LangChain and AutoGen frameworks provide robust foundations for implementing multi-agent systems. Our benchmarks demonstrate that AutoGen's asynchronous agent communication patterns reduce latency by 43\% compared to sequential processing in narrative generation tasks.
-    
-    \item \textbf{Memory and Context Management:} Vector databases (e.g., Chroma, Pinecone) combined with hierarchical retrieval patterns have demonstrated 78\% higher narrative consistency scores compared to flat context windows. Our implementation uses a three-tier memory system: immediate context (recent dialogue/events), episodic memory (character-specific interactions), and semantic memory (world knowledge/lore).
-    
-    \item \textbf{RHIT Interface Framework:} React-based interfaces with WebSocket communication have shown the highest human operator efficiency (92% faster intervention time) compared to other tested frameworks. Our implementation includes real-time visualization of narrative branches, confidence scores, and coherence metrics.
-\end{itemize}
-
 \section{Design and Implementation: Agentic Workflow with Reactive Human-in-the-Loop}
 
-We propose an agentic workflow for free-form story design that integrates RHIT at key stages of the narrative generation process. This workflow comprises several interacting agents:
+We propose an agentic workflow for free-form story design that integrates RHIT at key stages of the narrative generation process.  This workflow comprises several interacting agents:
 
 \begin{itemize}
-    \item \textbf{Narrative Generator Agent (NGA):} This agent leverages a pre-trained LLM to generate narrative text, responding to player actions and game events. It is responsible for creating scenes, dialogues, and descriptive text that advance the story. Our implementation uses a fine-tuned variant of Claude-3 Opus with specific prompt engineering patterns that achieved 89.4\% coherence scores in our benchmarks. The NGA employs a technique we call "narrative scaffolding," where high-level story arcs are maintained as embedding vectors that guide generation while allowing flexibility.
-    
-    \item \textbf{Coherence and Consistency Agent (CCA):} This agent monitors the NGA's output for narrative coherence, character consistency, and adherence to the established game world lore. It flags potential inconsistencies or plot holes. Our implementation uses a specialized 13B parameter model fine-tuned explicitly on narrative consistency tasks, achieving detection accuracy of 93.2\% for character inconsistencies and 88.7\% for world-building contradictions. The CCA utilizes a knowledge graph representation of the game world that is continuously updated, with constraint satisfaction algorithms that verify new content against established facts.
-    
-    \item \textbf{Reactive Human-in-the-Loop (RHIT) Interface:} This interface is triggered by the CCA when narrative issues are detected or by predefined game events (e.g., reaching a critical plot point). It presents human narrative designers with the LLM-generated text and flags, allowing for real-time editing, rewriting, or redirection of the narrative. Our implementation uses a threshold-based triggering system calibrated through reinforcement learning from human feedback, achieving an 87% reduction in unnecessary interventions while maintaining 96.3% narrative quality compared to full human oversight.
-    
-    \item \textbf{Player Input Agent (PIA):} This agent processes player actions and choices within the game, translating them into narrative context for the NGA. It ensures player agency is reflected in the evolving story. Our implementation uses a hybrid semantic parsing approach combining rule-based patterns with a specialized embedding model that achieved 94.8% accuracy in mapping player actions to narrative intents across diverse gameplay scenarios. The PIA incorporates a "narrative memory" mechanism that weights recent player choices more heavily than historical actions, resulting in a 37\% improvement in player-perceived agency.
-    
-    \item \textbf{Benchmark and Evaluation Agent (BEA):} This agent continuously evaluates the generated story against predefined benchmarks (discussed below), providing feedback to the NGA and CCA and informing RHIT interventions. Our implementation uses a multi-model ensemble approach, combining specialized evaluators for each benchmark dimension, which demonstrated a 28.3\% reduction in false positives compared to single-model approaches.
+    \item \textbf{Narrative Generator Agent (NGA):}  This agent leverages a pre-trained LLM to generate narrative text, responding to player actions and game events.  It is responsible for creating scenes, dialogues, and descriptive text that advance the story.
+    \item \textbf{Coherence and Consistency Agent (CCA):} This agent monitors the NGA's output for narrative coherence, character consistency, and adherence to the established game world lore.  It flags potential inconsistencies or plot holes.
+    \item \textbf{Reactive Human-in-the-Loop (RHIT) Interface:} This interface is triggered by the CCA when narrative issues are detected or by predefined game events (e.g., reaching a critical plot point).  It presents human narrative designers with the LLM-generated text and flags, allowing for real-time editing, rewriting, or redirection of the narrative.
+    \item \textbf{Player Input Agent (PIA):} This agent processes player actions and choices within the game, translating them into narrative context for the NGA.  It ensures player agency is reflected in the evolving story.
+    \item \textbf{Benchmark and Evaluation Agent (BEA):}  This agent continuously evaluates the generated story against predefined benchmarks (discussed below), providing feedback to the NGA and CCA and informing RHIT interventions.
 \end{itemize}
 
-The workflow operates iteratively: the PIA captures player input, the NGA generates narrative content, the CCA assesses coherence, and RHIT intervenes when necessary. The BEA provides continuous feedback, allowing for iterative refinement of both the LLM and the agentic system. The RHIT interface is designed to be *reactive*, meaning it only engages human designers when automated agents identify potential issues or critical decision points, maximizing efficiency while ensuring quality control.
-
-\subsection{Fine-tuning Approaches and Implementation Patterns}
-
-Our experimental results indicate several fine-tuning approaches and implementation patterns that consistently achieve high benchmark scores:
-
-\begin{itemize}
-    \item \textbf{Narrative Coherence Fine-tuning:} We developed a specialized dataset of 25,000 pairs of coherent and incoherent narrative sequences, annotated with specific coherence failure types. Using this dataset for supervised fine-tuning improved coherence scores by 41.2\% over base models. The most effective approach combines instruction tuning with direct preference optimization on human-rated examples.
-    
-    \item \textbf{Character Consistency Reinforcement:} We implemented a novel "character embedding" technique where each game character's traits, motivations, and history are encoded as vector representations that get injected into the model's generation process. This approach reduced character inconsistencies by 63.7\% in extended narrative sequences.
-    
-    \item \textbf{Dynamic Memory Management:} Our implementation uses a sliding window approach with retrieval-augmented generation, where relevant narrative history is selected using a learned relevance function rather than recency. This pattern improved narrative continuity by 47.3\% in long gameplay sessions compared to fixed context approaches.
-    
-    \item \textbf{Trigger Pattern Optimization:} For RHIT interventions, we developed a hierarchical classification system that categorizes narrative issues by severity and type. Using reinforcement learning from human feedback, we trained this system to achieve a precision of 91.3\% and recall of 88.7\% for detecting situations requiring human intervention.
-\end{itemize}
-
-\subsection{System Architecture and Integration}
-
-The practical implementation of our agentic workflow is facilitated through a microservices architecture that allows for flexible deployment across different game development environments:
-
-\begin{itemize}
-    \item \textbf{Agent Communication Protocol:} We implement a standardized JSON-based protocol for inter-agent communication, with schema validation and versioning to ensure compatibility across development iterations. Benchmarks show this approach reduces integration errors by 73\% compared to ad-hoc implementations.
-    
-    \item \textbf{Game Engine Integration:} We provide reference implementations for Unreal Engine 5 and Unity, utilizing their respective plugin architectures. Our Unity implementation achieved a 5ms average latency for narrative updates, well below the perceptible threshold during gameplay.
-    
-    \item \textbf{Scaling and Performance:} The system architecture supports both cloud-based deployment for MMO environments and edge deployment for single-player experiences. Our benchmarks demonstrate that the edge deployment configuration can support up to 20 narrative agents on mid-range gaming hardware while maintaining 60+ FPS gameplay.
-\end{itemize}
+The workflow operates iteratively: the PIA captures player input, the NGA generates narrative content, the CCA assesses coherence, and RHIT intervenes when necessary. The BEA provides continuous feedback, allowing for iterative refinement of both the LLM and the agentic system.  The RHIT interface is designed to be *reactive*, meaning it only engages human designers when automated agents identify potential issues or critical decision points, maximizing efficiency while ensuring quality control.
 
 \section{Benchmarks for LLM-Generated Story Writing in Games}
 
 Evaluating the quality of LLM-generated stories in games requires benchmarks beyond traditional text generation metrics like perplexity or BLEU score. We propose a multi-faceted benchmark framework encompassing:
 
 \begin{itemize}
-    \item \textbf{Narrative Coherence and Consistency:} Measures the logical flow of the story, the consistency of characters and world lore, and the absence of plot holes. This can be assessed through automated metrics (e.g., entity linking, relation extraction) and human evaluation. Our implementation uses a novel "narrative graph analysis" technique that achieved 94.1\% correlation with human expert evaluations of coherence.
-    
-    \item \textbf{Player Engagement and Immersion:} Assesses how effectively the story captures and maintains player interest. Metrics include player feedback surveys, playtesting data (e.g., playtime, choice selections), and physiological measures (e.g., engagement metrics via biometrics in controlled studies). Our framework incorporates a multi-modal assessment approach that combines explicit feedback with implicit signals (play session length, interaction frequency), achieving an 82.7\% correlation with subjective immersion reports.
-    
-    \item \textbf{Meaningful Player Agency:} Evaluates the extent to which player choices genuinely impact the narrative and game world. This can be measured by tracking the branching paths taken by players and assessing the perceived impact of their decisions on the story outcome. Our metrics include "narrative divergence" (quantifying how player choices lead to distinct narrative states) and "choice significance" (measuring the magnitude of world-state changes following decisions), which together achieved 89.3\% correlation with player-reported sense of agency.
-    
-    \item \textbf{Emotional Resonance and Thematic Depth:} Assesses the story's ability to evoke emotions and explore meaningful themes. This is primarily evaluated through qualitative human assessment, focusing on the narrative's artistic merit and impact. We supplement human evaluation with sentiment analysis and emotional arc mapping techniques that demonstrated 76.8\% alignment with reported emotional responses.
-    
-    \item \textbf{Authorial Intent Alignment:} Measures how well the generated story aligns with the game developers' intended narrative goals and artistic vision, assessed through expert human evaluation, particularly focusing on the effectiveness of RHIT interventions. Our framework includes a "vision fidelity score" that quantifies alignment between designer-specified narrative goals and generated content, achieving 91.2\% agreement with expert assessments.
+    \item \textbf{Narrative Coherence and Consistency:}  Measures the logical flow of the story, the consistency of characters and world lore, and the absence of plot holes.  This can be assessed through automated metrics (e.g., entity linking, relation extraction) and human evaluation.
+    \item \textbf{Player Engagement and Immersion:}  Assesses how effectively the story captures and maintains player interest. Metrics include player feedback surveys, playtesting data (e.g., playtime, choice selections), and physiological measures (e.g., engagement metrics via biometrics in controlled studies).
+    \item \textbf{Meaningful Player Agency:}  Evaluates the extent to which player choices genuinely impact the narrative and game world.  This can be measured by tracking the branching paths taken by players and assessing the perceived impact of their decisions on the story outcome.
+    \item \textbf{Emotional Resonance and Thematic Depth:}  Assesses the story's ability to evoke emotions and explore meaningful themes.  This is primarily evaluated through qualitative human assessment, focusing on the narrative's artistic merit and impact.
+    \item \textbf{Authorial Intent Alignment:} Measures how well the generated story aligns with the game developers' intended narrative goals and artistic vision, assessed through expert human evaluation, particularly focusing on the effectiveness of RHIT interventions.
 \end{itemize}
 
 These benchmarks provide a comprehensive framework for evaluating the success of LLM-driven free-form story design, moving beyond purely quantitative metrics to encompass qualitative aspects of narrative quality and player experience.
 
 \section{Discussion and Future Research}
 
-The proposed RHIT-driven agentic workflow offers a promising approach to designing free-form stories with LLMs in video games. The reactive nature of the human intervention ensures efficient use of developer time while maintaining crucial creative control. Future research should focus on:
+The proposed RHIT-driven agentic workflow offers a promising approach to designing free-form stories with LLMs in video games.  The reactive nature of the human intervention ensures efficient use of developer time while maintaining crucial creative control.  Future research should focus on:
 
 \begin{itemize}
-    \item \textbf{Empirical Validation:} Implementing and testing the proposed framework in a prototype game, evaluating its performance against the proposed benchmarks through playtesting and user studies. Our preliminary testing with a narrative-driven RPG prototype demonstrated a 63\% reduction in writer workload while maintaining 92\% of narrative quality compared to fully human-authored content.
-    
-    \item \textbf{RHIT Interface Design:} Investigating optimal interface designs for RHIT, focusing on usability and efficiency for narrative designers to effectively guide LLM outputs. Our ongoing research is exploring visualization techniques for narrative possibility spaces that allow designers to quickly comprehend potential story branches and their implications.
-    
-    \item \textbf{Adaptive Benchmarking:} Developing dynamic benchmarks that adapt to different game genres and narrative styles, allowing for more nuanced evaluation of LLM-generated stories. We are currently developing genre-specific benchmark variants for RPG, adventure, and simulation games, which show promising improvements in evaluation specificity.
-    
-    \item \textbf{Ethical Considerations:} Exploring the ethical implications of LLM-driven narrative generation, particularly concerning authorship, player manipulation, and the potential for biased or harmful content. Our framework includes bias detection modules and transparency mechanisms that provide insight into narrative generation decisions.
-    
-    \item \textbf{Cross-Modal Generation:} Extending the agentic workflow to incorporate other generative modalities, such as image, audio, and animation, for more comprehensive procedural content generation. Initial experiments with multi-modal LLMs show promising results for generating consistent visual and narrative elements.
+    \item \textbf{Empirical Validation:}  Implementing and testing the proposed framework in a prototype game, evaluating its performance against the proposed benchmarks through playtesting and user studies.
+    \item \textbf{RHIT Interface Design:}  Investigating optimal interface designs for RHIT, focusing on usability and efficiency for narrative designers to effectively guide LLM outputs.
+    \item \textbf{Adaptive Benchmarking:}  Developing dynamic benchmarks that adapt to different game genres and narrative styles, allowing for more nuanced evaluation of LLM-generated stories.
+    \item \textbf{Ethical Considerations:}  Exploring the ethical implications of LLM-driven narrative generation, particularly concerning authorship, player manipulation, and the potential for biased or harmful content.
 \end{itemize}
 
 Further exploration into these areas will be crucial for realizing the full potential of LLMs in creating truly dynamic and engaging game narratives.
 
 \section{Conclusion}
 
-Designing free-form stories with LLMs in video games presents both immense opportunities and significant challenges. This paper argues that Reactive Human-in-the-Loop, integrated within an agentic workflow, is a key ingredient for successfully harnessing LLMs to create compelling and player-driven narratives. By combining the generative power of LLMs with human artistic direction and quality control, and by employing robust benchmarks for evaluation, we can move towards a future where video games offer truly dynamic and personalized storytelling experiences. Our concrete implementation recommendations, based on extensive benchmarking and experimental validation, provide game developers with practical guidance for integrating these advanced narrative systems into their development pipelines. The agentic workflow framework presented here represents a significant step forward in balancing computational narrative generation with human creative direction, opening new possibilities for the future of interactive storytelling.
+Designing free-form stories with LLMs in video games presents both immense opportunities and significant challenges.  This paper argues that Reactive Human-in-the-Loop, integrated within an agentic workflow, is a key ingredient for successfully harnessing LLMs to create compelling and player-driven narratives.  By combining the generative power of LLMs with human artistic direction and quality control, and by employing robust benchmarks for evaluation, we can move towards a future where video games offer truly dynamic and personalized storytelling experiences.
 
 \end{document}
