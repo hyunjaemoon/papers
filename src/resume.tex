@@ -1,0 +1,130 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[letterpaper, margin=0.35in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+
+% Custom section formatting
+\titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+
+% Remove page numbers
+\pagestyle{empty}
+
+% Custom commands
+\newcommand{\resumeItem}[1]{\item\small{#1}}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item[]
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+% New command for consolidated positions
+\newcommand{\resumePosition}[2]{
+  \vspace{-1pt}\item[]
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\renewcommand{\labelitemii}{$\bullet$}
+
+\begin{document}
+
+% Header
+\begin{center}
+    \textbf{\LARGE Hyun Jae Moon} \\ \vspace{2pt}
+    \small Sunnyvale, CA $|$ \href{mailto:calhyunjaemoon@gmail.com}{calhyunjaemoon@gmail.com} $|$ +1 (949) 919-0085 $|$ \href{https://hyunjaemoon.com}{hyunjaemoon.com} $|$ \href{https://github.com/hyunjaemoon}{GitHub} $|$ \href{https://android-review.googlesource.com/q/owner:hyunjaemoon@google.com}{AOSP}
+\end{center}
+\vspace{-8pt}
+
+% Core Skills
+\section{Core Skills}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt, parsep=0pt]
+    \small{\item[]{
+        \textbf{Programming Languages:} Rust, Python, C++, TypeScript, JavaScript, HTML/CSS, Dart, SQL \\
+        \textbf{Technologies:} Flutter, React, GCP, Bazel, CMake, Docker, CI/CD, LangChain/LangGraph, Agentic AI, NL2SQL
+    }}
+\end{itemize}
+
+% Work Experience
+\section{Work Experience}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt]
+    \resumeSubheading
+        {Google}{Mountain View, CA}
+        {Senior Software Engineer}{Oct 2024 - Sep 2025}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{Architected and deployed LLM-powered network engineering agents on GCP using LangChain and LangGraph, automating the analysis of 2,000+ monthly connectivity reports}
+            \resumeItem{Reduced average debugging time by 7 days per issue through intelligent RAG and NL2SQL pipelines, significantly improving network reliability and engineering efficiency}
+        \end{itemize}
+        \resumePosition{Software Engineer III}{Apr 2023 - Oct 2024}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{Orchestrated weekly releases of network simulation software to the Android Emulator, supporting over 800,000 Daily Active Users (DAUs)}
+            \resumeItem{Engineered a robust CI/CD pipeline incorporating unit, integration, and end-to-end testing, reducing release friction and enhancing software stability}
+        \end{itemize}
+        \resumePosition{Software Engineer II}{Aug 2022 - Apr 2023}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{Designed and implemented a high-performance Frontend API in Rust and a responsive Web UI in TypeScript for Android Emulator's network simulation tools}
+            \resumeItem{Integrated complex build systems using Soong, Bazel, and CMake, ensuring seamless delivery to Android Studio Canary users}
+        \end{itemize}
+    
+    \resumeSubheading
+        {Samsung Electronics}{South Korea}
+        {Software Engineer Intern}{June 2021 - Aug 2021}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{Developed a defective refrigerator detection algorithm by applying advanced data clustering techniques and exploratory data analysis (EDA) to large-scale sensor data}
+        \end{itemize}
+    
+    \resumeSubheading
+        {Republic of Korea Army}{South Korea}
+        {Sergeant, Signal Intelligence Unit}{Oct 2018 - May 2020}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{Developed a mission-critical Signal Database Search Tool using C++ and Qt, enhancing data retrieval speed and accuracy for intelligence operations}
+        \end{itemize}
+    
+    \resumeSubheading
+        {Naver}{South Korea}
+        {ML Research Intern}{June 2018 - August 2018}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{Conducted research on state-of-the-art NLP models, including Multi-Cast Attention Networks and Transformers, to optimize chatbot performance and response accuracy}
+        \end{itemize}
+    
+    \resumeSubheading
+        {UC Berkeley EECS}{Berkeley, CA}
+        {Undergraduate Student Instructor (uGSI), CS61A}{Jan 2018 - May 2018}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{Instructed discussion sections and labs for CS61A, mentoring over 30 students weekly in Structure and Interpretation of Computer Programs}
+        \end{itemize}
+\end{itemize}
+
+% Projects
+\section{Projects}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt]
+    \resumeSubheading
+        {Python Testing Agent}{\href{https://pythontestingagent.com}{pythontestingagent.com}}
+        {}{}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{Developed a full-stack educational platform using the Gemini API to generate dynamic Python programming problems and autonomously grade submissions for correctness and efficiency}
+            \resumeItem{Deployed on Google Cloud Platform (Cloud Run) with a fully automated CI/CD pipeline using GitHub Actions}
+        \end{itemize}
+    
+    \resumeSubheading
+        {Yushin-Melamine}{\href{https://yushin-melamine.com}{yushin-melamine.com}}
+        {}{}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{Built a production website for a manufacturing firm featuring an intelligent product search agent powered by LangGraph and GCP Agent Engine}
+            \resumeItem{Implemented a scalable architecture using Python and Cloud Run, enabling intuitive natural language queries for product discovery}
+        \end{itemize}
+\end{itemize}
+
+% Education
+\section{Education}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt]
+    \resumeSubheading
+        {University of California, Berkeley}{Berkeley, CA}
+        {B.S. Electrical Engineering \& Computer Science}{May 2022}
+\end{itemize}
+
+\end{document}
