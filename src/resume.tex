@@ -1,12 +1,12 @@
 \documentclass[10pt,a4paper]{article}
-\usepackage[letterpaper, margin=0.35in]{geometry}
+\usepackage[letterpaper, margin=0.3in, top=0.25in, bottom=0.25in]{geometry}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{titlesec}
 
 % Custom section formatting
 \titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{3pt}{3pt}
+\titlespacing{\section}{0pt}{2pt}{2pt}
 
 % Remove page numbers
 \pagestyle{empty}
@@ -14,19 +14,19 @@
 % Custom commands
 \newcommand{\resumeItem}[1]{\item\small{#1}}
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}\item[]
+  \vspace{-2pt}\item[]
     \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-4pt}
+    \end{tabular*}\vspace{-5pt}
 }
 
 % New command for consolidated positions
 \newcommand{\resumePosition}[2]{
-  \vspace{-1pt}\item[]
+  \vspace{-2pt}\item[]
     \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-4pt}
+    \end{tabular*}\vspace{-5pt}
 }
 
 \renewcommand{\labelitemii}{$\bullet$}
@@ -38,20 +38,28 @@
     \textbf{\LARGE Hyun Jae Moon} \\ \vspace{2pt}
     \small Sunnyvale, CA $|$ \href{mailto:calhyunjaemoon@gmail.com}{calhyunjaemoon@gmail.com} $|$ +1 (949) 919-0085 $|$ \href{https://hyunjaemoon.com}{hyunjaemoon.com} $|$ \href{https://github.com/hyunjaemoon}{GitHub} $|$ \href{https://android-review.googlesource.com/q/owner:hyunjaemoon@google.com}{AOSP}
 \end{center}
-\vspace{-8pt}
+\vspace{-10pt}
 
 % Core Skills
 \section{Core Skills}
 \begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt, parsep=0pt]
     \small{\item[]{
         \textbf{Programming Languages:} Rust, Python, C++, TypeScript, JavaScript, HTML/CSS, Dart, SQL \\
-        \textbf{Technologies:} Flutter, React, GCP, Bazel, CMake, Docker, CI/CD, LangChain/LangGraph, Agentic AI, NL2SQL
+        \textbf{Technologies:} Flutter, React, GCP, AWS, Bazel, CMake, Docker, CI/CD, LangChain/LangGraph, Agentic AI, NL2SQL
     }}
 \end{itemize}
 
 % Work Experience
 \section{Work Experience}
-\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt]
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
+    \resumeSubheading
+        {Freelance Software Engineer}{Remote}
+        {Full-Stack Developer}{Sep 2025 - Present}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{Built \href{https://playshelfapp.com}{PlayShelf}, a social video game tracking app with game rating, ranking, and friend-based discovery, using Python (FastAPI), PostgreSQL, React, and AWS}
+            \resumeItem{Developed \href{https://yushin-melamine.com}{Yushin-Melamine}, a production website for a manufacturing firm featuring an intelligent product search agent powered by LangGraph and GCP Agent Engine}
+        \end{itemize}
+
     \resumeSubheading
         {Google}{Mountain View, CA}
         {Senior Software Engineer}{Oct 2024 - Sep 2025}
@@ -101,27 +109,33 @@
 
 % Projects
 \section{Projects}
-\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt]
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
     \resumeSubheading
         {Python Testing Agent}{\href{https://pythontestingagent.com}{pythontestingagent.com}}
         {}{}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{Developed a full-stack educational platform using the Gemini API to generate dynamic Python programming problems and autonomously grade submissions for correctness and efficiency}
-            \resumeItem{Deployed on Google Cloud Platform (Cloud Run) with a fully automated CI/CD pipeline using GitHub Actions}
+            \resumeItem{Full-stack educational platform using the Gemini API to generate dynamic Python problems and autonomously grade submissions, deployed on Cloud Run with GitHub Actions CI/CD}
         \end{itemize}
-    
+
     \resumeSubheading
-        {Yushin-Melamine}{\href{https://yushin-melamine.com}{yushin-melamine.com}}
+        {GCP Training}{\href{https://github.com/hyunjaemoon/gcp-training}{github.com/hyunjaemoon/gcp-training}}
         {}{}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{Built a production website for a manufacturing firm featuring an intelligent product search agent powered by LangGraph and GCP Agent Engine}
-            \resumeItem{Implemented a scalable architecture using Python and Cloud Run, enabling intuitive natural language queries for product discovery}
+            \resumeItem{Full-stack cloud training app with Firebase authentication and Vertex AI Gemini chatbot, deployable via Cloud Run and GKE with Docker and Cloud Build CI/CD}
         \end{itemize}
+
+    \resumeSubheading
+        {Ollama Voice}{\href{https://github.com/hyunjaemoon/ollama-voice}{github.com/hyunjaemoon/ollama-voice}}
+        {}{}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{Developed a fully local, bidirectional speech-to-speech service using Ollama, Whisper, and pyttsx3 with real-time silence detection and GPU acceleration support}
+        \end{itemize}
+
 \end{itemize}
 
 % Education
 \section{Education}
-\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt]
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
     \resumeSubheading
         {University of California, Berkeley}{Berkeley, CA}
         {B.S. Electrical Engineering \& Computer Science}{May 2022}

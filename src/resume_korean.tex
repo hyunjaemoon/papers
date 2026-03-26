@@ -1,5 +1,5 @@
 \documentclass[10pt,a4paper]{article}
-\usepackage[letterpaper, margin=0.35in]{geometry}
+\usepackage[letterpaper, margin=0.3in, top=0.25in, bottom=0.25in]{geometry}
 \usepackage{kotex}
 \usepackage{enumitem}
 \usepackage{hyperref}
@@ -7,7 +7,7 @@
 
 % Custom section formatting
 \titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{3pt}{3pt}
+\titlespacing{\section}{0pt}{2pt}{2pt}
 
 % Remove page numbers
 \pagestyle{empty}
@@ -15,19 +15,19 @@
 % Custom commands
 \newcommand{\resumeItem}[1]{\item\small{#1}}
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}\item[]
+  \vspace{-2pt}\item[]
     \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-4pt}
+    \end{tabular*}\vspace{-5pt}
 }
 
 % New command for consolidated positions
 \newcommand{\resumePosition}[2]{
-  \vspace{-1pt}\item[]
+  \vspace{-2pt}\item[]
     \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-4pt}
+    \end{tabular*}\vspace{-5pt}
 }
 
 \renewcommand{\labelitemii}{$\bullet$}
@@ -39,20 +39,28 @@
     \textbf{\LARGE 문현재} \\ \vspace{2pt}
     \small Sunnyvale, CA $|$ \href{mailto:calhyunjaemoon@gmail.com}{calhyunjaemoon@gmail.com} $|$ +1 (949) 919-0085 $|$ \href{https://hyunjaemoon.com}{hyunjaemoon.com} $|$ \href{https://github.com/hyunjaemoon}{GitHub} $|$ \href{https://android-review.googlesource.com/q/owner:hyunjaemoon@google.com}{AOSP}
 \end{center}
-\vspace{-8pt}
+\vspace{-10pt}
 
 % Core Skills
 \section{핵심 기술}
 \begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt, parsep=0pt]
     \small{\item[]{
         \textbf{프로그래밍 언어:} Rust, Python, C++, TypeScript, JavaScript, HTML/CSS, Dart, SQL \\
-        \textbf{기술:} Flutter, React, GCP, Bazel, CMake, Docker, CI/CD, LangChain/LangGraph, Agentic AI, NL2SQL
+        \textbf{기술:} Flutter, React, GCP, AWS, Bazel, CMake, Docker, CI/CD, LangChain/LangGraph, Agentic AI, NL2SQL
     }}
 \end{itemize}
 
 % Work Experience
 \section{경력}
-\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt]
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
+    \resumeSubheading
+        {프리랜서 소프트웨어 엔지니어}{원격}
+        {풀스택 개발자}{2025년 9월 - 현재}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{게임 평가, 랭킹, 친구 기반 탐색 기능을 갖춘 소셜 비디오 게임 트래킹 앱 \href{https://playshelfapp.com}{PlayShelf}를 Python (FastAPI), PostgreSQL, React, AWS로 구축}
+            \resumeItem{LangGraph와 GCP Agent Engine으로 구동되는 지능형 제품 검색 에이전트를 갖춘 제조업체용 프로덕션 웹사이트 \href{https://yushin-melamine.com}{Yushin-Melamine} 개발}
+        \end{itemize}
+
     \resumeSubheading
         {Google}{Mountain View, CA}
         {Senior Software Engineer}{2024년 10월 - 2025년 9월}
@@ -102,27 +110,33 @@
 
 % Projects
 \section{프로젝트}
-\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt]
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
     \resumeSubheading
         {Python Testing Agent}{\href{https://pythontestingagent.com}{pythontestingagent.com}}
         {}{}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{Gemini API를 사용하여 동적 Python 프로그래밍 문제를 생성하고 정확성과 효율성을 위해 제출물을 자율적으로 채점하는 풀스택 교육 플랫폼 개발}
-            \resumeItem{GitHub Actions를 사용한 완전 자동화된 CI/CD 파이프라인과 함께 Google Cloud Platform (Cloud Run)에 배포}
+            \resumeItem{Gemini API를 사용하여 동적 Python 문제 생성 및 자율 채점이 가능한 풀스택 교육 플랫폼, GitHub Actions CI/CD로 Cloud Run에 배포}
         \end{itemize}
-    
+
     \resumeSubheading
-        {Yushin-Melamine}{\href{https://yushin-melamine.com}{yushin-melamine.com}}
+        {GCP Training}{\href{https://github.com/hyunjaemoon/gcp-training}{github.com/hyunjaemoon/gcp-training}}
         {}{}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{LangGraph와 GCP Agent Engine으로 구동되는 지능형 제품 검색 에이전트를 갖춘 제조업체용 프로덕션 웹사이트 구축}
-            \resumeItem{Python과 Cloud Run을 사용하여 확장 가능한 아키텍처를 구현하여 제품 발견을 위한 직관적인 자연어 쿼리 제공}
+            \resumeItem{Firebase 인증과 Vertex AI Gemini 챗봇을 갖춘 풀스택 클라우드 트레이닝 앱, Docker 및 Cloud Build CI/CD로 Cloud Run과 GKE 배포 지원}
         \end{itemize}
+
+    \resumeSubheading
+        {Ollama Voice}{\href{https://github.com/hyunjaemoon/ollama-voice}{github.com/hyunjaemoon/ollama-voice}}
+        {}{}
+        \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
+            \resumeItem{Ollama, Whisper, pyttsx3를 사용하여 실시간 무음 감지 및 GPU 가속을 지원하는 완전 로컬 양방향 음성 대화 서비스 개발}
+        \end{itemize}
+
 \end{itemize}
 
 % Education
 \section{학력}
-\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt]
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
     \resumeSubheading
         {University of California, Berkeley}{Berkeley, CA}
         {B.S. Electrical Engineering \& Computer Science}{2022년 5월}
