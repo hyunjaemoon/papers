@@ -8,7 +8,7 @@ Hyun Jae Moon's papers and resumes, written in LaTeX. Sources live in `src/`, an
 - `fun_random/` — The Fun Randomness Algorithm
 - `immersive_games/` — Immersive Games
 - `reactive_hitl_game_dev/` — Reactive Human-in-the-Loop Game Development
-- `zuzu_claude_code/` — Sufficient Infrastructure for the One-Person, Two-Country Software Company (ZUZU + Claude Code)
+- `zuzu_claude_code/` — ZUZU and Claude Code: The One-Person, Two-Country Software Company
 
 ## Prerequisites
 
