@@ -9,6 +9,7 @@ Hyun Jae Moon's papers and resumes, written in LaTeX. Sources live in `src/`, an
 - `immersive_games/` — Immersive Games
 - `reactive_hitl_game_dev/` — Reactive Human-in-the-Loop Game Development
 - `zuzu_claude_code/` — ZUZU and Claude Code: The One-Person, Two-Country Software Company
+- `zuzu_claude_code_korean/` — 위 논문의 한국어판 (ZUZU와 Claude Code: 1인 · 양국 소프트웨어 회사)
 
 ## Prerequisites
 
