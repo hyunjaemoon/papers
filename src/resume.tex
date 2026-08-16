@@ -29,6 +29,14 @@
     \end{tabular*}\vspace{-5pt}
 }
 
+% Single-line heading for abridged, earlier-career roles
+\newcommand{\resumeCompactHeading}[3]{
+  \vspace{-2pt}\item[]
+    \begin{tabular*}{\linewidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} $|$ \textit{\small #2} & \textit{\small #3} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
 \renewcommand{\labelitemii}{$\bullet$}
 
 \begin{document}
@@ -53,13 +61,17 @@
 \section{Work Experience}
 \begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
     \resumeSubheading
+        {CJ Olive Young}{Seoul, South Korea}
+        {Forward Deployed Engineer, AX Engineering Team}{Starting Sep 2026}
+        \vspace{8pt}
+
+    \resumeSubheading
         {MoonAI}{Remote}
-        {Founder \& Build/Release Engineer}{Sep 2025 - Present}
+        {Founder \& Owner}{Sep 2025 - Sep 2026}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{Founded \href{https://moonai.kr}{MoonAI} (\href{https://moonai.kr}{moonai.kr}), an AI delivery shop serving Korea and US-based businesses offering fixed-price audit, MVP, and retainer engagements}
+            \resumeItem{Founded \href{https://moonai.kr}{MoonAI} (\href{https://moonai.kr}{moonai.kr}), an AI delivery shop serving Korea and US-based businesses offering fixed-price audit, MVP, and retainer engagements; stepped back from day-to-day operations in Sep 2026 while retaining 100\% ownership}
             \resumeItem{Built \href{https://playshelfapp.com}{PlayShelf} (\href{https://playshelfapp.com}{playshelfapp.com}), a social video game tracking app featuring game rating, ranking, friend-based discovery, AI-powered suggestions, and insight enrichment via LLM, using Python (FastAPI), PostgreSQL, React, AWS, SQS, and Redis}
             \resumeItem{Developed \href{https://yushin-melamine.com}{Yushin-Melamine} (\href{https://yushin-melamine.com}{yushin-melamine.com}), a production website for a manufacturing firm featuring an intelligent product search agent powered by LangGraph and GCP Agent Engine}
-            \resumeItem{Architected and implemented a phone call evaluation runner for a healthcare AI Agent company, enabling automated assessment of AI-driven patient interactions at scale}
         \end{itemize}
 
     \resumeSubheading
@@ -71,36 +83,31 @@
         \end{itemize}
         \resumePosition{Software Engineer III}{Apr 2023 - Oct 2024}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{Orchestrated weekly releases of network simulation software to the Android Emulator, supporting over 800,000 Daily Active Users (DAUs)}
-            \resumeItem{Engineered a robust CI/CD pipeline incorporating unit, integration, and end-to-end testing, reducing release friction and enhancing software stability}
+            \resumeItem{Orchestrated weekly releases of network simulation software to the Android Emulator for 800,000+ Daily Active Users, backed by a CI/CD pipeline spanning unit, integration, and end-to-end testing}
         \end{itemize}
         \resumePosition{Software Engineer II}{Aug 2022 - Apr 2023}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{Designed and implemented a high-performance Frontend API in Rust and a responsive Web UI in TypeScript for Android Emulator's network simulation tools}
-            \resumeItem{Integrated complex build systems using Soong, Bazel, and CMake, ensuring seamless delivery to Android Studio Canary users}
+            \resumeItem{Built a high-performance Frontend API in Rust and a responsive Web UI in TypeScript for Android Emulator's network simulation tools, integrating Soong, Bazel, and CMake builds for delivery to Android Studio Canary}
         \end{itemize}
-    
-    \resumeSubheading
-        {Samsung Electronics}{South Korea}
-        {Software Engineer Intern}{June 2021 - Aug 2021}
+
+    \resumeCompactHeading
+        {Samsung Electronics}{Software Engineer Intern, South Korea}{June 2021 - Aug 2021}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{Developed a defective refrigerator detection algorithm by applying advanced data clustering techniques and exploratory data analysis (EDA) to large-scale sensor data}
+            \resumeItem{Developed a defective refrigerator detection algorithm using data clustering and exploratory data analysis on large-scale sensor data}
         \end{itemize}
-    
-    \resumeSubheading
-        {Republic of Korea Army}{South Korea}
-        {Sergeant, Signal Intelligence Unit}{Oct 2018 - May 2020}
+
+    \resumeCompactHeading
+        {Republic of Korea Army}{Sergeant, Signal Intelligence Unit, South Korea}{Oct 2018 - May 2020}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{Developed a mission-critical Signal Database Search Tool using C++ and Qt, enhancing data retrieval speed and accuracy for intelligence operations}
+            \resumeItem{Built a mission-critical Signal Database Search Tool in C++ and Qt, improving data retrieval speed and accuracy for intelligence operations}
         \end{itemize}
-    
-    \resumeSubheading
-        {Naver}{South Korea}
-        {ML Research Intern}{June 2018 - August 2018}
+
+    \resumeCompactHeading
+        {Naver}{ML Research Intern, South Korea}{June 2018 - Aug 2018}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{Conducted research on state-of-the-art NLP models, including Multi-Cast Attention Networks and Transformers, to optimize chatbot performance and response accuracy}
+            \resumeItem{Researched state-of-the-art NLP models, including Multi-Cast Attention Networks and Transformers, to optimize chatbot performance and response accuracy}
         \end{itemize}
-    
+
 \end{itemize}
 
 % Projects

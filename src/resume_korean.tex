@@ -33,6 +33,14 @@
     \end{tabular*}\vspace{-5pt}
 }
 
+% Single-line heading for abridged, earlier-career roles
+\newcommand{\resumeCompactHeading}[3]{
+  \vspace{-2pt}\item[]
+    \begin{tabular*}{\linewidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} $|$ \textit{\small #2} & \textit{\small #3} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
 \renewcommand{\labelitemii}{$\bullet$}
 
 \begin{document}
@@ -57,13 +65,17 @@
 \section{경력}
 \begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
     \resumeSubheading
+        {CJ올리브영}{대한민국 서울}
+        {Forward Deployed Engineer, AX Engineering 팀}{2026년 9월 입사 예정}
+        \vspace{8pt}
+
+    \resumeSubheading
         {문AI (MoonAI)}{원격}
-        {창업자 및 빌드/배포 엔지니어}{2025년 9월 - 현재}
+        {창업자 및 대표}{2025년 9월 - 2026년 9월}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{한국 및 미국 기업을 대상으로 하는 AI 딜리버리 전문 회사 \href{https://moonai.kr}{문AI} (\href{https://moonai.kr}{moonai.kr})를 창업하여 정액제 진단, MVP, 리테이너 서비스 제공}
+            \resumeItem{한국 및 미국 기업을 대상으로 하는 AI 딜리버리 전문 회사 \href{https://moonai.kr}{문AI} (\href{https://moonai.kr}{moonai.kr})를 창업하여 정액제 진단, MVP, 리테이너 서비스 제공, 2026년 9월 상근직에서 물러났으나 지분 100\% 보유}
             \resumeItem{게임 평가, 랭킹, 친구 기반 탐색, LLM 기반 AI 게임 추천 및 인사이트 강화 기능을 갖춘 소셜 비디오 게임 트래킹 앱 \href{https://playshelfapp.com}{PlayShelf} (\href{https://playshelfapp.com}{playshelfapp.com})를 Python (FastAPI), PostgreSQL, React, AWS, SQS, Redis로 구축}
             \resumeItem{LangGraph와 GCP Agent Engine으로 구동되는 지능형 제품 검색 에이전트를 갖춘 제조업체용 프로덕션 웹사이트 \href{https://yushin-melamine.com}{Yushin-Melamine} (\href{https://yushin-melamine.com}{yushin-melamine.com}) 개발}
-            \resumeItem{헬스케어 AI 에이전트 기업을 위한 전화 통화 평가 러너 아키텍처를 설계 및 구현하여 AI 기반 환자 상호작용의 대규모 자동 평가 지원}
         \end{itemize}
 
     \resumeSubheading
@@ -75,36 +87,31 @@
         \end{itemize}
         \resumePosition{Software Engineer III}{2023년 4월 - 2024년 10월}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{Android Emulator에 네트워크 시뮬레이션 소프트웨어를 주간 배포하여 80만 명 이상의 일일 활성 사용자(DAU) 지원}
-            \resumeItem{단위, 통합, 엔드투엔드 테스트를 포함한 견고한 CI/CD 파이프라인을 구축하여 릴리스 마찰을 줄이고 소프트웨어 안정성 향상}
+            \resumeItem{Android Emulator에 네트워크 시뮬레이션 소프트웨어를 주간 배포하여 80만 명 이상의 일일 활성 사용자(DAU) 지원, 단위/통합/엔드투엔드 테스트를 포함한 CI/CD 파이프라인 구축}
         \end{itemize}
         \resumePosition{Software Engineer II}{2022년 8월 - 2023년 4월}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{Android Emulator의 네트워크 시뮬레이션 도구를 위한 Rust 기반 고성능 Frontend API와 TypeScript 기반 반응형 Web UI 설계 및 구현}
-            \resumeItem{Soong, Bazel, CMake를 사용하여 복잡한 빌드 시스템을 통합하여 Android Studio Canary 사용자에게 원활한 배포 보장}
+            \resumeItem{Android Emulator 네트워크 시뮬레이션 도구를 위한 Rust 기반 고성능 Frontend API와 TypeScript 기반 Web UI를 구현하고, Soong/Bazel/CMake 빌드를 통합하여 Android Studio Canary 배포}
         \end{itemize}
-    
-    \resumeSubheading
-        {삼성전자}{대한민국}
-        {Software Engineer Intern}{2021년 6월 - 2021년 8월}
+
+    \resumeCompactHeading
+        {삼성전자}{Software Engineer Intern, 대한민국}{2021년 6월 - 2021년 8월}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
-            \resumeItem{고급 데이터 클러스터링 기법과 탐색적 데이터 분석(EDA)을 대규모 센서 데이터에 적용하여 불량 냉장고 탐지 알고리즘 개발}
+            \resumeItem{데이터 클러스터링 기법과 탐색적 데이터 분석(EDA)을 대규모 센서 데이터에 적용하여 불량 냉장고 탐지 알고리즘 개발}
         \end{itemize}
-    
-    \resumeSubheading
-        {대한민국 육군}{대한민국}
-        {병장, 신호정보병}{2018년 10월 - 2020년 5월}
+
+    \resumeCompactHeading
+        {대한민국 육군}{병장, 신호정보병}{2018년 10월 - 2020년 5월}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
             \resumeItem{C++와 Qt를 사용하여 임무 핵심 데이터베이스 검색 도구를 개발하여 정보 작전의 데이터 검색 속도와 정확도 향상}
         \end{itemize}
-    
-    \resumeSubheading
-        {네이버}{대한민국}
-        {ML Research Intern}{2018년 6월 - 2018년 8월}
+
+    \resumeCompactHeading
+        {네이버}{ML Research Intern, 대한민국}{2018년 6월 - 2018년 8월}
         \begin{itemize}[leftmargin=0.2in, itemsep=0pt]
             \resumeItem{Multi-Cast Attention Networks와 Transformers를 포함한 최신 NLP 모델 연구를 수행하여 챗봇 성능과 응답 정확도 최적화}
         \end{itemize}
-    
+
 \end{itemize}
 
 % Projects

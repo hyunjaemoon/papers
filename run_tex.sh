@@ -38,6 +38,27 @@ for tex_file in src/*.tex; do
         continue
     fi
 
+    # Shrink the PDF. pdfTeX embeds each CJK Type 1 subfont separately, which
+    # bloats Korean documents to megabytes; Ghostscript re-encodes them as CFF
+    # and drops the duplicates. Lossless for text, and links survive.
+    if command -v gs > /dev/null 2>&1; then
+        if gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite \
+              -dPDFSETTINGS=/prepress -dSubsetFonts=true -dCompressFonts=true \
+              -sOutputFile="build/$filename.min.pdf" "build/$filename.pdf" 2>/dev/null \
+           && [ -s "build/$filename.min.pdf" ]; then
+            before=$(wc -c < "build/$filename.pdf")
+            after=$(wc -c < "build/$filename.min.pdf")
+            if [ "$after" -lt "$before" ]; then
+                mv "build/$filename.min.pdf" "build/$filename.pdf"
+                echo "Optimized: $((before / 1024)) KB -> $((after / 1024)) KB"
+            else
+                rm -f "build/$filename.min.pdf"
+            fi
+        else
+            rm -f "build/$filename.min.pdf"
+        fi
+    fi
+
     # Copy the pdf file to its output directory
     mkdir -p "$filename"
     cp "build/$filename.pdf" "$filename/"
